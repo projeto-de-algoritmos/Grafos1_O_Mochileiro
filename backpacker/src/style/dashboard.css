@@ -1,0 +1,65 @@
+.container {
+  background-color: white;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(58, 206, 9, 0.505);
+  background-repeat: no-repeat;
+}
+.filters {
+  background-color: red;
+  height: calc(70vh - 20px);
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  flex: 1;
+}
+.results {
+  /* background-color: green; */
+  background-color: rgba(59, 118, 236, 0.992);
+  /* background-color: rgba(134, 167, 232, 0.992); */
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  width: 75%;
+  height: calc(40vh + 27px);
+  position: absolute;
+  left: 13%;
+  overflow-y: hidden;
+  margin: 0;
+  top: calc(55% + 10px);
+  border-radius: 20px 20px 0 0;
+}
+
+.form-field {
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+  /* outline: none; */
+  width: 400px;
+  height: 40px;
+  margin-left: 40px;
+  margin-top: 30px;
+  font-family: 'Baloo'; 
+  color: rgba(0, 0, 0, 0.60);
+  font-size: 20px;
+}
+.button-visit {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  background-color: rgba(22, 75, 124, 0.648);
+  /* background-color: rgba(57, 113, 226, 0.992); */
+  cursor: pointer;
+  font-family: 'Baloo';
+  color: white;
+  border-radius: 8px;
+  width: 150px;
+  height: 40px;
+    margin-left: 50px;
+  /* margin-right: 180px; */
+  margin-top: 10px;
+}
+.header {
+  height: 25px;
+  background-color: grey;
+}
