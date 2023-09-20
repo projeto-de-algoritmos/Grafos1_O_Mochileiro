@@ -3,15 +3,86 @@ import './style/dashboard.css';
 
 function Dashboard() {
   const graph = {
-    Alemanha: ['Áustria', 'Bélgica'],
-    Áustria: ['Alemanha', 'Espanha'],
-    Bélgica: ['Áustria', 'Alemanha'],
-    Espanha: ['Áustria', 'Bélgica'],
+    Alemanha: {
+      vizinhos: {
+        Áustria: 513,
+        Bélgica: 713,
+        França: 4,
+        Luxemburgo: 2,
+        PaísesBaixos: 2,
+        Suíça: 2,
+      },
+    },
+    Áustria: {
+      vizinhos: {
+        Alemanha: 2,
+        Itália: 2,
+        Suíça: 2,
+      },
+    },
+    Bélgica: {
+      vizinhos: {
+        Alemanha: 2,
+        França: 4,
+        Luxemburgo: 2,
+        PaísesBaixos: 2,
+      },
+    },
+    Espanha: {
+      vizinhos: {
+        França: 4,
+      },
+    },
+    Itália: {
+      vizinhos: {
+        Áustria: 2,
+        França: 4,
+        Suíça: 2,
+      },
+    },
+    Luxemburgo: {
+      vizinhos: {
+        Alemanha: 2,
+        Bélgica: 2,
+        França: 4,
+      },
+    },
+    ReinoUnido: {
+      vizinhos: {
+        França: 4,
+      },
+    },
+    Suíça: {
+      vizinhos: {
+        Alemanha: 2,
+        Áustria: 2,
+        França: 4,
+        Itália: 2,
+      },
+    },
+    PaísesBaixos: {
+      vizinhos: {
+        Alemanha: 2,
+        Bélgica: 2,
+      },
+    },
   };
 
+  // const graph = {
+  //   Alemanha: ['Áustria', 'Bélgica', 'França', 'Luxemburgo', 'PaísesBaixos', 'Suíça'],
+  //   Áustria: ['Alemanha', 'Itália', 'Suíça'],
+  //   Bélgica: ['Alemanha', 'França', 'Luxemburgo', 'PaísesBaixos'],
+  //   Espanha: ['França'],
+  //   Itália: ['Áustria', 'França', 'Suíça'],
+  //   Luxembugo: ['Alemanha', 'Bélgica','França'],
+  //   ReinoUnido: ['França'],
+  //   Suíça: ['Alemanha', 'Áustria', 'França', 'Itália'],
+  //   PaísesBaixos: ['Alemanha', 'Bélgica'],
+  // };
+
   const opcoesJSON = {
-    opcoes1: ["Áustria", "Alemanha", "Bélgica", "Espanha"],
-    opcoes2: ["Áustria", "Alemanha", "Bélgica", "Espanha"],
+    opcoes1: ["Alemanha","Áustria",  "Bélgica", "Espanha", "Itália", "Luxemburgo", "ReinoUnido", "Suíça", "PaísesBaixos"],
+    opcoes2: ["Alemanha","Áustria",  "Bélgica", "Espanha", "Itália", "Luxemburgo", "ReinoUnido", "Suíça", "PaísesBaixos"],
   };
 
   // Estados para armazenar os países de origem e destino selecionados pelo usuário
@@ -30,14 +101,14 @@ function Dashboard() {
       const { pais, caminho } = fila.shift();
       visitados.add(pais);
 
-      for (const vizinho of graph[pais]) {
+      for (const vizinho of Object.keys(graph[pais].vizinhos)) {
         if (!visitados.has(vizinho)) {
           const novoCaminho = [...caminho, vizinho];
 
           if (vizinho === destino) {
-            // Atualize o estado com o resultado encontrado
+            // Atualizando a fila
             setCaminhoEncontrado(novoCaminho);
-            return; // Encerre a busca
+            return;
           } else {
             fila.push({ pais: vizinho, caminho: novoCaminho });
           }
