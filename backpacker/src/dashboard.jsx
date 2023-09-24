@@ -3,7 +3,7 @@ import './style/dashboard.css';
 
 function Dashboard() {
 
-  const graph = [{
+  const graph1 = {
     Alemanha: ['Áustria', 'Bélgica', 'França', 'Luxemburgo', 'PaísesBaixos', 'Suíça'],
     Austria: ['Alemanha', 'Itália', 'Suíça'],
     Bélgica: ['Alemanha', 'França', 'Luxemburgo', 'PaísesBaixos'],
@@ -12,12 +12,31 @@ function Dashboard() {
     Luxembugo: ['Alemanha', 'Bélgica','França'],
     ReinoUnido: ['França'],
     Suíça: ['Alemanha', 'Áustria', 'França', 'Itália'],
-    PaísesBaixos: ['Alemanha', 'Bélgica'],
-  }];
+    PaísesBaixos: ['Alemanha', 'Bélgica']
+  };
+
+  // O erro do BFS não está aceitando Itália e reino unido utilizando o graph1 é problema no próprio grafo1 e não na função
+  // utilizando o graph é possível comprovar isso!
+  const graph = {
+    A: ['B', 'D'],
+    B: ['A', 'C', 'E', 'G'],
+    C: ['B', 'H'],
+    D: ['A', 'E'],
+    E: ['B', 'D', 'F'],
+    F: ['E', 'G', 'K'],
+    G: ['B', 'F', 'I'],
+    H: ['C', 'I'],
+    I: ['G', 'H', 'J'],
+    J: ['I', 'K'],
+    K: ['F', 'J']
+  };
 
   const opcoesJSON = {
-    opcoes1: ["Alemanha","Áustria",  "Bélgica", "Espanha", "Itália", "Luxemburgo", "ReinoUnido", "Suíça", "PaísesBaixos"],
-    opcoes2: ["Alemanha","Áustria",  "Bélgica", "Espanha", "Itália", "Luxemburgo", "ReinoUnido", "Suíça", "PaísesBaixos"],
+    opcoes11: ["Alemanha","Áustria",  "Bélgica", "Espanha", "Itália", "Luxemburgo", "ReinoUnido", "Suíça", "PaísesBaixos"],
+    opcoes22: ["Alemanha","Áustria",  "Bélgica", "Espanha", "Itália", "Luxemburgo", "ReinoUnido", "Suíça", "PaísesBaixos"],
+    opcoes1: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"],
+    opcoes2: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"],
+  
   };
 
   // Estados para armazenar os países de origem e destino selecionados pelo usuário
@@ -36,7 +55,7 @@ function Dashboard() {
       const { pais, caminho } = fila.shift();
       visitados.add(pais);
 
-      for (const vizinho of Object.keys(graph[pais])) {
+      for (const vizinho of graph[pais]) {
         if (!visitados.has(vizinho)) {
           const novoCaminho = [...caminho, vizinho];
 
