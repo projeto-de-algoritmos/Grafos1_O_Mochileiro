@@ -3,43 +3,48 @@ import './style/dashboard.css';
 
 function Dashboard() {
 
-  const graph1 = {
-    Alemanha: ['Áustria', 'Bélgica', 'França', 'Luxemburgo', 'PaísesBaixos', 'Suíça'],
-    Austria: ['Alemanha', 'Itália', 'Suíça'],
-    Bélgica: ['Alemanha', 'França', 'Luxemburgo', 'PaísesBaixos'],
-    Espanha: ['França'],
-    Itália: ['Áustria', 'França', 'Suíça'],
-    Luxembugo: ['Alemanha', 'Bélgica','França'],
-    ReinoUnido: ['França'],
-    Suíça: ['Alemanha', 'Áustria', 'França', 'Itália'],
-    PaísesBaixos: ['Alemanha', 'Bélgica']
-  };
-
-  // O erro do BFS não está aceitando Itália e reino unido utilizando o graph1 é problema no próprio grafo1 e não na função
-  // utilizando o graph é possível comprovar isso!
+  // grafo utilizado no BFS
   const graph = {
-    A: ['B', 'D'],
-    B: ['A', 'C', 'E', 'G'],
-    C: ['B', 'H'],
-    D: ['A', 'E'],
-    E: ['B', 'D', 'F'],
-    F: ['E', 'G', 'K'],
-    G: ['B', 'F', 'I'],
-    H: ['C', 'I'],
-    I: ['G', 'H', 'J'],
-    J: ['I', 'K'],
-    K: ['F', 'J']
+    Madrid: ['Lisbon', 'Barcelona', 'Bordeaux'],
+    Barcelona: ['Madrid','Montpellier'],
+    Montpellier: ['Barcelona', 'Marseille'],
+    Marseille: ['Montpellier', 'Lyon', 'Nice'],
+    Nice: ['Marseille', 'Milan'],
+    Rome: ['Florence'],
+    Florence: ['Rome', 'Bologna', 'Venice'],
+    Bologna: ['Florence', 'Milan'],
+    Venice: ['Milan', 'Florence'],
+    Milan: ['Bern', 'Nice', 'Bologna', 'Venice', 'Munich'],
+    Bern: ['Lyon', 'Milan', 'Frankfurt'],
+    Lyon: ['Bern', 'Marseille', 'Bordeaux', 'Paris'],
+    Bordeaux: ['Madrid', 'Lyon', 'Paris'],
+    Amsterdam: ['Brussels', 'Berlin'],
+    Brussels: ['Amsterdam', 'Paris', 'Frankfurt', 'London'],
+    Berlin: ['Amsterdam', 'Hamburg', 'Prague'],
+    Hamburg: ['Berlin', 'Copenhagen', 'Frankfurt', 'Munich'],
+    Copenhagen: ['Hamburg'],
+    Frankfurt: ['Hamburg', 'Munich', 'Bern', 'Paris', 'Brussels'],
+    Munich: ['Frankfurt', 'Vienna', 'Milan', 'Prague', 'Hamburg'],
+    Prague: ['Munich', 'Vienna', 'Berlin'],
+    Vienna: ['Prague', 'Munich', 'Budapest', 'Venice'],
+    Budapest: ['Vienna'],
+    London: ['Paris', 'Brussels'],
+    Paris: ['London', 'Brussels', 'Frankfurt', 'Lyon', 'Bordeaux'],
+    Lisbon: ['Madrid']
   };
 
+  // Opcoes de origem e destino
   const opcoesJSON = {
-    opcoes11: ["Alemanha","Áustria",  "Bélgica", "Espanha", "Itália", "Luxemburgo", "ReinoUnido", "Suíça", "PaísesBaixos"],
-    opcoes22: ["Alemanha","Áustria",  "Bélgica", "Espanha", "Itália", "Luxemburgo", "ReinoUnido", "Suíça", "PaísesBaixos"],
-    opcoes1: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"],
-    opcoes2: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"],
+    opcoes1: ["Madrid", "Barcelona", "Montpellier", "Marseille", "Nice", "Rome", "Florence", "Bologna", 
+      "Venice", "Milan", "Bern", "Lyon", "Bordeaux", "Amsterdam", "Brussels", "Berlin","Hamburg",
+      "Copenhagen", "Frankfurt", "Munich", "Prague", "Vienna", "Budapest", "London", "Paris", "Lisbon"],
+    opcoes2: ["Madrid", "Barcelona", "Montpellier", "Marseille", "Nice", "Rome", "Florence", "Bologna", 
+      "Venice", "Milan", "Bern", "Lyon", "Bordeaux", "Amsterdam", "Brussels", "Berlin","Hamburg",
+      "Copenhagen", "Frankfurt", "Munich", "Prague", "Vienna", "Budapest", "London", "Paris", "Lisbon"],
   
   };
 
-  // Estados para armazenar os países de origem e destino selecionados pelo usuário
+  // Estados para armazenar os paises de origem e destino selecionados pelo usuário
   const [origem, setOrigem] = useState('');
   const [destino, setDestino] = useState('');
 
@@ -72,7 +77,7 @@ function Dashboard() {
     // Se nenhum caminho for encontrado o array é atualizado como vazio
     setCaminhoEncontrado([]);
   }
-
+  
   return (
     <div className='container'>
       <div className='filters'>
