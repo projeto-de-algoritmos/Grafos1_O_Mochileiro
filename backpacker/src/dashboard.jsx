@@ -3,7 +3,7 @@ import './style/dashboard.css';
 
 function Dashboard() {
 
-  const graph = {
+  const graph = [{
     Alemanha: ['Áustria', 'Bélgica', 'França', 'Luxemburgo', 'PaísesBaixos', 'Suíça'],
     Austria: ['Alemanha', 'Itália', 'Suíça'],
     Bélgica: ['Alemanha', 'França', 'Luxemburgo', 'PaísesBaixos'],
@@ -13,7 +13,7 @@ function Dashboard() {
     ReinoUnido: ['França'],
     Suíça: ['Alemanha', 'Áustria', 'França', 'Itália'],
     PaísesBaixos: ['Alemanha', 'Bélgica'],
-  };
+  }];
 
   const opcoesJSON = {
     opcoes1: ["Alemanha","Áustria",  "Bélgica", "Espanha", "Itália", "Luxemburgo", "ReinoUnido", "Suíça", "PaísesBaixos"],
@@ -36,7 +36,7 @@ function Dashboard() {
       const { pais, caminho } = fila.shift();
       visitados.add(pais);
 
-      for (const vizinho of graph[pais]) {
+      for (const vizinho of Object.keys(graph[pais])) {
         if (!visitados.has(vizinho)) {
           const novoCaminho = [...caminho, vizinho];
 
