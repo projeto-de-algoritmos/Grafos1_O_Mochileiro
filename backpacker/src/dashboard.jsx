@@ -82,12 +82,14 @@ function Dashboard() {
     <div className='container'>
       <div className='filters'>
         <iframe
-          src="https://www.google.com/maps/d/embed?mid=1mCk3QZZHGvUo-P1dgt-HBvcDJr1lhRo&ehbc=2E312F&noprof=1"
-          width="100%"
-          height="100%"
+        className='iframe'
+          src="https://www.google.com/maps/d/embed?mid=1mCk3QZZHGvUo-P1dgt-HBvcDJr1lhRo&ehbc=2E312F&noprof=1&iwloc=addr"
+          // src="https://www.google.com/maps/d/embed?mid=1on6Z9xUfxfyIhTU0bO4ap6XzyB_o7EE&ehbc=2E312F&noprof=1"
+          width="100%"  
+          height="110%"
           allowfullscreen=""
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
+          // referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
       <div className='results'>
@@ -117,7 +119,7 @@ function Dashboard() {
           ))}
         </select>
         <button
-          className="button-visit"
+          className="button-visit en"
           type="button"
           onClick={encontrarMenorCaminho}
         >
