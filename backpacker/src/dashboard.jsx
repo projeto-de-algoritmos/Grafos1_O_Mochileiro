@@ -2,90 +2,49 @@ import React, { useState } from 'react';
 import './style/dashboard.css';
 
 function Dashboard() {
+
+  // grafo utilizado no BFS
   const graph = {
-    Alemanha: {
-      vizinhos: {
-        Áustria: 513,
-        Bélgica: 713,
-        França: 4,
-        Luxemburgo: 2,
-        PaísesBaixos: 2,
-        Suíça: 2,
-      },
-    },
-    Áustria: {
-      vizinhos: {
-        Alemanha: 2,
-        Itália: 2,
-        Suíça: 2,
-      },
-    },
-    Bélgica: {
-      vizinhos: {
-        Alemanha: 2,
-        França: 4,
-        Luxemburgo: 2,
-        PaísesBaixos: 2,
-      },
-    },
-    Espanha: {
-      vizinhos: {
-        França: 4,
-      },
-    },
-    Itália: {
-      vizinhos: {
-        Áustria: 2,
-        França: 4,
-        Suíça: 2,
-      },
-    },
-    Luxemburgo: {
-      vizinhos: {
-        Alemanha: 2,
-        Bélgica: 2,
-        França: 4,
-      },
-    },
-    ReinoUnido: {
-      vizinhos: {
-        França: 4,
-      },
-    },
-    Suíça: {
-      vizinhos: {
-        Alemanha: 2,
-        Áustria: 2,
-        França: 4,
-        Itália: 2,
-      },
-    },
-    PaísesBaixos: {
-      vizinhos: {
-        Alemanha: 2,
-        Bélgica: 2,
-      },
-    },
+    Madrid: ['Lisbon', 'Barcelona', 'Bordeaux'],
+    Barcelona: ['Madrid','Montpellier'],
+    Montpellier: ['Barcelona', 'Marseille'],
+    Marseille: ['Montpellier', 'Lyon', 'Nice'],
+    Nice: ['Marseille', 'Milan'],
+    Rome: ['Florence'],
+    Florence: ['Rome', 'Bologna', 'Venice'],
+    Bologna: ['Florence', 'Milan'],
+    Venice: ['Milan', 'Florence'],
+    Milan: ['Bern', 'Nice', 'Bologna', 'Venice', 'Munich'],
+    Bern: ['Lyon', 'Milan', 'Frankfurt'],
+    Lyon: ['Bern', 'Marseille', 'Bordeaux', 'Paris'],
+    Bordeaux: ['Madrid', 'Lyon', 'Paris'],
+    Amsterdam: ['Brussels', 'Berlin'],
+    Brussels: ['Amsterdam', 'Paris', 'Frankfurt', 'London'],
+    Berlin: ['Amsterdam', 'Hamburg', 'Prague'],
+    Hamburg: ['Berlin', 'Copenhagen', 'Frankfurt', 'Munich'],
+    Copenhagen: ['Hamburg'],
+    Frankfurt: ['Hamburg', 'Munich', 'Bern', 'Paris', 'Brussels'],
+    Munich: ['Frankfurt', 'Vienna', 'Milan', 'Prague', 'Hamburg'],
+    Prague: ['Munich', 'Vienna', 'Berlin'],
+    Vienna: ['Prague', 'Munich', 'Budapest', 'Venice'],
+    Budapest: ['Vienna'],
+    London: ['Paris', 'Brussels'],
+    Paris: ['London', 'Brussels', 'Frankfurt', 'Lyon', 'Bordeaux'],
+    Lisbon: ['Madrid']
   };
 
-  // const graph = {
-  //   Alemanha: ['Áustria', 'Bélgica', 'França', 'Luxemburgo', 'PaísesBaixos', 'Suíça'],
-  //   Áustria: ['Alemanha', 'Itália', 'Suíça'],
-  //   Bélgica: ['Alemanha', 'França', 'Luxemburgo', 'PaísesBaixos'],
-  //   Espanha: ['França'],
-  //   Itália: ['Áustria', 'França', 'Suíça'],
-  //   Luxembugo: ['Alemanha', 'Bélgica','França'],
-  //   ReinoUnido: ['França'],
-  //   Suíça: ['Alemanha', 'Áustria', 'França', 'Itália'],
-  //   PaísesBaixos: ['Alemanha', 'Bélgica'],
-  // };
-
+  // Opcoes de origem e destino
   const opcoesJSON = {
-    opcoes1: ["Alemanha","Áustria",  "Bélgica", "Espanha", "Itália", "Luxemburgo", "ReinoUnido", "Suíça", "PaísesBaixos"],
-    opcoes2: ["Alemanha","Áustria",  "Bélgica", "Espanha", "Itália", "Luxemburgo", "ReinoUnido", "Suíça", "PaísesBaixos"],
+    opcoes1: ["Madrid", "Barcelona", "Montpellier", "Marseille", "Nice", "Rome", "Florence", "Bologna", 
+      "Venice", "Milan", "Bern", "Lyon", "Bordeaux", "Amsterdam", "Brussels", "Berlin","Hamburg",
+      "Copenhagen", "Frankfurt", "Munich", "Prague", "Vienna", "Budapest", "London", "Paris", "Lisbon"],
+    opcoes2: ["Madrid", "Barcelona", "Montpellier", "Marseille", "Nice", "Rome", "Florence", "Bologna", 
+      "Venice", "Milan", "Bern", "Lyon", "Bordeaux", "Amsterdam", "Brussels", "Berlin","Hamburg",
+      "Copenhagen", "Frankfurt", "Munich", "Prague", "Vienna", "Budapest", "London", "Paris", "Lisbon"],
+  
   };
 
-  // Estados para armazenar os países de origem e destino selecionados pelo usuário
+  // Estados para armazenar os paises de origem e destino selecionados pelo usuário
   const [origem, setOrigem] = useState('');
   const [destino, setDestino] = useState('');
 
@@ -101,7 +60,7 @@ function Dashboard() {
       const { pais, caminho } = fila.shift();
       visitados.add(pais);
 
-      for (const vizinho of Object.keys(graph[pais].vizinhos)) {
+      for (const vizinho of graph[pais]) {
         if (!visitados.has(vizinho)) {
           const novoCaminho = [...caminho, vizinho];
 
@@ -118,12 +77,12 @@ function Dashboard() {
     // Se nenhum caminho for encontrado o array é atualizado como vazio
     setCaminhoEncontrado([]);
   }
-
+  
   return (
     <div className='container'>
       <div className='filters'>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22058808.237381425!2d1.0383528005593117!3d47.55366878504264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46ed8886cfadda85%3A0x72ef99e6b3fcf079!2sEuropa!5e0!3m2!1spt-BR!2sbr!4v1694984190419!5m2!1spt-BR!2sbr"
+          src="https://www.google.com/maps/d/embed?mid=1mCk3QZZHGvUo-P1dgt-HBvcDJr1lhRo&ehbc=2E312F&noprof=1"
           width="100%"
           height="100%"
           allowfullscreen=""
