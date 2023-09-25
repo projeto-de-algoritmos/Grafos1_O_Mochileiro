@@ -10,52 +10,49 @@
 
 ## Sobre 
 
-O projeto é chamado mochileiro, a ideia é facilitar a um mochileiro (ou qualquer pessoa interessada em viajar pela Europa) a usar o transporte para viajar por várias cidades em países diferentes da Europa. O transporte em específico é o trem, cujo projeto é demonstrar não só as rotas de trens da europa de forma mais simplificada, mas também as opções de escolher a origem de partida da viagem do mochileiro e o destino, resultando no menor caminho que é preciso percorrer utilizando as linhas de trens da Europa até atingir o seu destino.
+<p align="justify">
+Seja bem-vindo ao 'Mochileiro'! Aqui, vamos facilitar a sua aventura pela Europa, seja você um mochileiro experiente ou apenas alguém com vontade de viajar pelo continente.
+Com 'Mochileiro', você poderá descobrir as rotas de trem pela Europa de maneira descomplicada. Imagine ter a liberdade de escolher de onde começar sua jornada e o seu destino final. E não se preocupe, encontraremos o caminho mais curto para você, utilizando as fantásticas linhas ferroviárias da Europa.
+Então, prepare-se para uma emocionante viagem e vamos juntos explorar as maravilhas da Europa de trem!"</p>
 
-Também é possível acessar as passagens destes trens, pois clicando no **ícone De Trem** vai direcioná-lo até o site [the trainline](https://www.thetrainline.com/pt-br). 
+<p align="justify">
+Você pode acessar as passagens desses trens clicando no ícone de trem, que o direcionará para o site <a href="https://www.thetrainline.com/pt-br">the Trainline</a> onde também foi baseado o mapa utilizado no projeto.
+</p>
 
-**Imagem1 - ícone De Trem** 
 
-![iconDeTrem](backpacker/src/images/iconDeTrem.png)
-
-Esse site possui as passagens dos trens para você conseguir comprar de forma online. Deixando o projeto não só dinâmico, mas também facilitando ainda mais a realização da viagem do mochileiro. 
-
-O mapa utilizado no projeto foi baseado no mapa disponibilizado pelo site **the trainline**. Foi preciso fazer uma simplificação do mapa original de modo que não deixasse de ser válido e real. Antes eram 42 cidades com a mudança resultou em 26 cidades no mapa simplificado.
-
-O mapa original se encontra em [Trainline.com](https://www.google.com/maps/d/viewer?mid=1C32UlQDhOUDvGSwp5b5vvmor7RN4wuQs&femb=1&ll=47.67500830393339%2C9.644235769772656&z=5), podendo ser visualizado em **Imagem2**. 
-
-**Imagem2 - Mapa Original** 
+## Screenshots
+**Imagem 1 - Mapa Original** 
 
 ![mapOriginal](backpacker/src/images/mapOriginal.png)
 
-## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+**Imagem 2 - Tela inicial** 
+
+![mapOriginal](backpacker/src/images/telaInicial.png)
+
+**Imagem 3 - Resultado** 
+
+![mapOriginal](backpacker/src/images/resultado.png)
 
 ## Instalação 
-**Linguagem**: JavaScript e CSS <br>
-**Framework**: NodeJs<br>
-
+**Linguagem**: JavaScript<br>
+**Framework**: Node.js React.js<br>
 ### Pré-requisitos para rodar o sistema:
 
-- NodeJs na versão v14.13.0
-- npm v6.14.8
-- CSS
-- React
-
-## Uso 
-### Passo 1:
-
-- Após intalar as tecnologias que são Pré-requisitos, Clona o repositório do projeto em sua máquina. Com o comando logo abaixo:
-  ```
-  git clone https://github.com/projeto-de-algoritmos/Grafos1_O_Mochileiro.git
-  ```
-### Passo 2:
-- Abre a pasta backpacker pelo terminal e digita:
+- Node.js versão v14.0.0 ou superior <br>
+#### Passo 1
+- Após a instação de todos os pŕe-requisitos, dentro da pasta backpacker utilize o comando:
   ```
   npm start
   ```
+
+
  ### Pronto, o projeto estará rodando! 
+## Uso 
+
+<p align="justify">
+Nosso mapa exibe as rotas de trem em várias cidades da Europa. Tudo o que você precisa fazer é escolher o ponto de partida e o destino desejados, e nossa aplicação encontrará o caminho mais curto entre essas cidades. É fácil e conveniente para planejar suas viagens de trem pela Europa.
+</p>
 
 ## Outros 
 
-Vale ressaltar que os responsáveis pelo desenvolvimento do projeto **O Mochileiro** não se responsabilizam por qualquer coisa que possa ocorrer com os usuários ao utilizarem o site [the trainline](https://www.thetrainline.com/pt-br).  
+Vale ressaltar que os responsáveis pelo desenvolvimento do projeto **O Mochileiro** não se responsabilizam por qualquer coisa que possa ocorrer com os usuários ao utilizarem o site [the Trainline](https://www.thetrainline.com/pt-br).  

@@ -85,7 +85,7 @@ h1 {
 }
 h2 {
   text-align: left;
-  margin-left: 25px;
+  margin-left: 4%;
   color: #ff9900;
   margin-top: 20px;
 }
@@ -116,14 +116,25 @@ img {
 }
 .close-button {
   position: absolute;
-    top: -10px;
-    right: -10px;
-    background: #ff9900;
-    color: #fff;
-    border: 1px solid white;
-    padding: 3px 6px;
-    cursor: pointer;
-    border-radius: 80%;
+  top: -10px;
+  right: -10px;
+  background: #ff9900;
+  color: #fff;
+  border: 1px solid white;
+  padding: 3px 6px;
+  cursor: pointer;
+  border-radius: 80%;
+}
+.close-button-two {
+  position: absolute;
+  top: 10px;
+  right: -10px;
+  background: #ff9900;
+  color: #fff;
+  border: 1px solid white;
+  padding: 3px 6px;
+  cursor: pointer;
+  border-radius: 80%;
 }
 .select-container {
   display: flex;
@@ -157,13 +168,26 @@ img {
 }
 .line {
   color: #00FF00;
-  font-size: 30px;
-  margin-left: 25px;
+  font-size: 28px;
+  padding: 2px 5px 2px 10px;
+  margin: 0px 50px 15px 50px;
+  /* height: 25%; */
+  text-align: center;
+  /* margin-left: 10px; */
+  background-color: white;
+  border-radius: 8px;
 }
 .down {
   height: 7%;
   background-color: rgba(255, 255, 255, 0);
   left: 85%;
+  top: 90%; 
+  position: fixed;
+}
+.down-left {
+  height: 7%;
+  background-color: rgba(255, 255, 255, 0);
+  left: 13%;
   top: 90%; 
   position: fixed;
 }

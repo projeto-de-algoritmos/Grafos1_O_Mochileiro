@@ -2,13 +2,22 @@ import React, { useState,   useEffect } from 'react';
 import './style/dashboard.css';
 
 function Dashboard() {
+  //popup
   const [isPopupVisible, setIsPopupVisible] = useState(true);
 
   const closePopup = () => {
     setIsPopupVisible(false);
     localStorage.setItem('hasClosedPopup', 'true');
   };
+  //header
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
 
+  const closeHeader = () => {
+    setIsHeaderVisible(false);
+    localStorage.setItem('hasClosedPopup', 'true');
+  };
+
+  // função para formatar o caminho encontrado
   function formatarCaminho(caminhoEncontrado) {
     if (caminhoEncontrado.length === 0) {
       return "Caminho não encontrado";
@@ -26,10 +35,10 @@ function Dashboard() {
     Bordéus: ['Lisboa', 'Lyon', 'Paris'],
     Bruxelas: ['Amsterdã', 'Paris', 'Frankfurt', 'Londres'],
     Budapeste: ['Viena'],
-    Copenhaga: ['Hamburgo'],
+    Copenhage: ['Hamburgo'],
     Florença: ['Roma', 'Bolonha', 'Veneza'],
     Frankfurt: ['Hamburgo', 'Munique', 'Berna', 'Paris', 'Bruxelas'],
-    Hamburgo: ['Berlim', 'Copenhaga', 'Frankfurt', 'Munique'],
+    Hamburgo: ['Berlim', 'Copenhage', 'Frankfurt', 'Munique'],
     Lisboa: ['Madri'],
     Londres: ['Paris', 'Bruxelas'],
     Lyon: ['Berna', 'Marselha', 'Bordéus', 'Paris'],
@@ -49,7 +58,7 @@ function Dashboard() {
   // Opcoes de origem e destino
   const opcoesJSON = {
     opcoes: ["Amsterdã", "Barcelona", "Berlim", "Berna", "Bolonha", "Bordéus", "Bruxelas", "Budapeste", 
-      "Copenhaga", "Florença", "Frankfurt", "Hamburgo", "Lisboa", "Londres", "Lyon", "Madri", "Marselha", 
+      "Copenhage", "Florença", "Frankfurt", "Hamburgo", "Lisboa", "Londres", "Lyon", "Madri", "Marselha", 
       "Milão", "Montpellier", "Munique", "Nice", "Paris", "Praga", "Roma", "Veneza", "Viena"],
   };
 
@@ -89,11 +98,13 @@ function Dashboard() {
   
   return (
     <div className='container'>
+      {isHeaderVisible && (
       <header className='header'>
         <img src="https://cdn.pixabay.com/photo/2012/04/13/17/52/backpacker-33063_1280.png" alt="Descrição da Imagem" /> 
         <h1>Bem-vindo, Aventureiro!</h1>
+          <button className='close-button-two' onClick={closeHeader}>X</button>
       </header> 
-      
+      )}
       <div className='filters'>
         {isPopupVisible && (
           <div className="popup">
@@ -133,7 +144,7 @@ function Dashboard() {
             value={destino}
             onChange={(e) => setDestino(e.target.value)}
             >
-            <option value="">selecione o país de destino</option>
+            <option value="">selecione a cidade de destino</option>
             {opcoesJSON.opcoes.map((opcao, index) => (
               <option key={index} value={opcao}>
                 {opcao}
@@ -152,7 +163,7 @@ function Dashboard() {
         {/* resultado */}
         {caminhoEncontrado.length > 0 && (
           <div>
-            <h2>Caminho Encontrado:</h2>
+            <h2>Encontramos o melhor caminho para você:</h2>
             <p className='line'>{formatarCaminho(caminhoEncontrado)}</p>
           </div>
         )}
