@@ -156,14 +156,12 @@ img {
   }
 }
 .line {
-  /* color: rgba(58, 206, 9, 0.505); */
   color: #00FF00;
   font-size: 30px;
-  /* left: 50%; */
   margin-left: 25px;
 }
 .down {
-height: 7%;
+  height: 7%;
   background-color: rgba(255, 255, 255, 0);
   left: 85%;
   top: 90%; 

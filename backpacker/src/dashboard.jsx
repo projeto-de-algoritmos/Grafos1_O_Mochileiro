@@ -10,55 +10,47 @@ function Dashboard() {
   };
 
   function formatarCaminho(caminhoEncontrado) {
-    // Verifica se o caminho é válido
     if (caminhoEncontrado.length === 0) {
       return "Caminho não encontrado";
     }
-
-    // Cria uma string formatada com setas entre os países
     return caminhoEncontrado.join(" -> ");
   }
 
-
-  // grafo utilizado no BFS
+  // grafo
   const graph = {
-    Madrid: ['Lisbon', 'Barcelona', 'Bordeaux'],
-    Barcelona: ['Madrid','Montpellier'],
-    Montpellier: ['Barcelona', 'Marseille'],
-    Marseille: ['Montpellier', 'Lyon', 'Nice'],
-    Nice: ['Marseille', 'Milan'],
-    Rome: ['Florence'],
-    Florence: ['Rome', 'Bologna', 'Venice'],
-    Bologna: ['Florence', 'Milan'],
-    Venice: ['Milan', 'Florence'],
-    Milan: ['Bern', 'Nice', 'Bologna', 'Venice', 'Munich'],
-    Bern: ['Lyon', 'Milan', 'Frankfurt'],
-    Lyon: ['Bern', 'Marseille', 'Bordeaux', 'Paris'],
-    Bordeaux: ['Madrid', 'Lyon', 'Paris'],
-    Amsterdam: ['Brussels', 'Berlin'],
-    Brussels: ['Amsterdam', 'Paris', 'Frankfurt', 'London'],
-    Berlin: ['Amsterdam', 'Hamburg', 'Prague'],
-    Hamburg: ['Berlin', 'Copenhagen', 'Frankfurt', 'Munich'],
-    Copenhagen: ['Hamburg'],
-    Frankfurt: ['Hamburg', 'Munich', 'Bern', 'Paris', 'Brussels'],
-    Munich: ['Frankfurt', 'Vienna', 'Milan', 'Prague', 'Hamburg'],
-    Prague: ['Munich', 'Vienna', 'Berlin'],
-    Vienna: ['Prague', 'Munich', 'Budapest', 'Venice'],
-    Budapest: ['Vienna'],
-    London: ['Paris', 'Brussels'],
-    Paris: ['London', 'Brussels', 'Frankfurt', 'Lyon', 'Bordeaux'],
-    Lisbon: ['Madrid']
+    Amsterdã: ['Bruxelas', 'Berlim'],
+    Barcelona: ['Madri', 'Montpellier'],
+    Berlim: ['Amsterdã', 'Hamburgo', 'Praga'],
+    Berna: ['Lyon', 'Milão', 'Frankfurt'],
+    Bolonha: ['Florença', 'Milão'],
+    Bordéus: ['Lisboa', 'Lyon', 'Paris'],
+    Bruxelas: ['Amsterdã', 'Paris', 'Frankfurt', 'Londres'],
+    Budapeste: ['Viena'],
+    Copenhaga: ['Hamburgo'],
+    Florença: ['Roma', 'Bolonha', 'Veneza'],
+    Frankfurt: ['Hamburgo', 'Munique', 'Berna', 'Paris', 'Bruxelas'],
+    Hamburgo: ['Berlim', 'Copenhaga', 'Frankfurt', 'Munique'],
+    Lisboa: ['Madri'],
+    Londres: ['Paris', 'Bruxelas'],
+    Lyon: ['Berna', 'Marselha', 'Bordéus', 'Paris'],
+    Madri: ['Lisboa', 'Barcelona', 'Bordéus'],
+    Marselha: ['Montpellier', 'Lyon', 'Nice'],
+    Milão: ['Berna', 'Nice', 'Bolonha', 'Veneza', 'Munique'],
+    Montpellier: ['Barcelona', 'Marselha'],
+    Munique: ['Frankfurt', 'Viena', 'Milão', 'Praga', 'Hamburgo'],
+    Nice: ['Marselha', 'Milão'],
+    Paris: ['Londres', 'Bruxelas', 'Frankfurt', 'Lyon', 'Bordéus'],
+    Praga: ['Munique', 'Viena', 'Berlim'],
+    Roma: ['Florença'],
+    Veneza: ['Milão', 'Florença'],
+    Viena: ['Praga', 'Munique', 'Budapeste'],
   };
 
   // Opcoes de origem e destino
   const opcoesJSON = {
-    opcoes1: ["Madrid", "Barcelona", "Montpellier", "Marseille", "Nice", "Rome", "Florence", "Bologna", 
-      "Venice", "Milan", "Bern", "Lyon", "Bordeaux", "Amsterdam", "Brussels", "Berlin","Hamburg",
-      "Copenhagen", "Frankfurt", "Munich", "Prague", "Vienna", "Budapest", "London", "Paris", "Lisbon"],
-    opcoes2: ["Madrid", "Barcelona", "Montpellier", "Marseille", "Nice", "Rome", "Florence", "Bologna", 
-      "Venice", "Milan", "Bern", "Lyon", "Bordeaux", "Amsterdam", "Brussels", "Berlin","Hamburg",
-      "Copenhagen", "Frankfurt", "Munich", "Prague", "Vienna", "Budapest", "London", "Paris", "Lisbon"],
-  
+    opcoes: ["Amsterdã", "Barcelona", "Berlim", "Berna", "Bolonha", "Bordéus", "Bruxelas", "Budapeste", 
+      "Copenhaga", "Florença", "Frankfurt", "Hamburgo", "Lisboa", "Londres", "Lyon", "Madri", "Marselha", 
+      "Milão", "Montpellier", "Munique", "Nice", "Paris", "Praga", "Roma", "Veneza", "Viena"],
   };
 
   // Estados para armazenar os paises de origem e destino selecionados pelo usuário
@@ -129,7 +121,7 @@ function Dashboard() {
             onChange={(e) => setOrigem(e.target.value)}
             >
             <option value="">selecione a cidade de origem</option>
-            {opcoesJSON.opcoes1.map((opcao, index) => (
+            {opcoesJSON.opcoes.map((opcao, index) => (
               <option key={index} value={opcao}>
                 {opcao}
               </option>
@@ -142,7 +134,7 @@ function Dashboard() {
             onChange={(e) => setDestino(e.target.value)}
             >
             <option value="">selecione o país de destino</option>
-            {opcoesJSON.opcoes2.map((opcao, index) => (
+            {opcoesJSON.opcoes.map((opcao, index) => (
               <option key={index} value={opcao}>
                 {opcao}
               </option>
@@ -165,7 +157,6 @@ function Dashboard() {
           </div>
         )}
         <img className='down' src="https://cdn.pixabay.com/photo/2018/01/25/05/32/silhouette-3105461_1280.png" alt="Descrição da Imagem" /> 
-
       </div>
     </div>
   );
