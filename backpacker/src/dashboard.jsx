@@ -71,14 +71,14 @@ function Dashboard() {
 
   // BFS
   function encontrarMenorCaminho() {
-    const fila = [{ pais: origem, caminho: [origem] }];
+    const fila = [{ cidade: origem, caminho: [origem] }];
     const visitados = new Set();
 
     while (fila.length > 0) {
-      const { pais, caminho } = fila.shift();
-      visitados.add(pais);
+      const { cidade, caminho } = fila.shift();
+      visitados.add(cidade);
 
-      for (const vizinho of graph[pais]) {
+      for (const vizinho of graph[cidade]) {
         if (!visitados.has(vizinho)) {
           const novoCaminho = [...caminho, vizinho];
 
@@ -87,7 +87,7 @@ function Dashboard() {
             setCaminhoEncontrado(novoCaminho);
             return;
           } else {
-            fila.push({ pais: vizinho, caminho: novoCaminho });
+            fila.push({ cidade: vizinho, caminho: novoCaminho });
           }
         }
       }
