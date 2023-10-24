@@ -44,7 +44,7 @@ Você pode acessar as passagens desses trens clicando no ícone de trem, que o d
 
 - Node.js versão v14.0.0 ou superior <br>
 #### Passo 1
-- Após a instação de todos os pŕe-requisitos, dentro da pasta backpacker utilize o comando:
+- Após a instalação de todos os pŕe-requisitos, dentro da pasta backpacker utilize o comando:
   ```
   npm start
   ```
